@@ -1,5 +1,5 @@
 defmodule Circle do
-  @moduledoc "Implements basis circle functions"
+  @moduledoc "Implements basic circle functions"
 
   @pi 3.14159
 

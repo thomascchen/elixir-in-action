@@ -16,7 +16,14 @@ defmodule NaturalNums do
   end
 
   def print(n) when n > 1 do
-    print(n-1)
     IO.puts(n)
+    print(n-1)
+  end
+
+  def measure(function) do
+    function
+    |> :timer.tc
+    |> elem(0)
+    |> Kernel./(1_000_000)
   end
 end

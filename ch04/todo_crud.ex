@@ -1,8 +1,10 @@
+# Section 4.2.1
 defmodule TodoList do
   defstruct auto_id: 1, entries: Map.new
 
   def new, do: %TodoList{}
 
+  # Bonus runtime type checks via pattern matching on TodoList struct
   def add_entry(
     %TodoList{entries: entries, auto_id: auto_id} = todo_list,
     entry
@@ -18,7 +20,11 @@ defmodule TodoList do
 
   def entries(%TodoList{entries: entries}, date) do
     entries
-    |> Stream.filter(fn({_, entry}) -> entry.date == date end)
-    |> Enum.map(fn({_, entry}) -> entry end)
+    |> Stream.filter(fn({_, entry}) ->
+        entry.date == date
+      end)
+    |> Enum.map(fn({_, entry}) ->
+        entry
+      end)
   end
 end

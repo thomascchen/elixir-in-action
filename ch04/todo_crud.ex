@@ -1,12 +1,21 @@
 # Section 4.2.1
 defmodule TodoEntry do
-  defstruct id: nil, date: nil, title: nil
+  defstruct id: 1, date: nil, title: nil
 end
 
 defmodule TodoList do
   defstruct auto_id: 1, entries: Map.new
 
-  def new, do: %TodoList{}
+  def new(entries \\ []) do
+    Enum.reduce(
+      entries,
+      %TodoList{},
+      # fn(entry, todo_list_acc) ->
+      #   add_entry(todo_list_acc, entry)
+      # end
+      &add_entry(&2, &1)
+    )
+  end
 
   # Bonus runtime type checks via pattern matching on TodoList struct
   def add_entry(
@@ -64,5 +73,13 @@ defmodule TodoList do
         new_entries = Map.delete(entries, entry_id)
         %TodoList{todo_list | entries: new_entries }
     end
+  end
+
+  def test_entries do
+    [
+      %TodoEntry{date: {2013, 12, 19}, title: "Dentist"},
+      %TodoEntry{date: {2013, 12, 20}, title: "Shopping"},
+      %TodoEntry{date: {2013, 12, 21}, title: "Movies"},
+    ]
   end
 end

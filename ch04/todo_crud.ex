@@ -52,4 +52,17 @@ defmodule TodoList do
         %TodoList{todo_list | entries: new_entries }
     end
   end
+
+  def delete_entry(
+    %TodoList{entries: entries} = todo_list,
+    entry_id
+  ) do
+    case entries[entry_id] do
+      nil -> todo_list
+
+      _ ->
+        new_entries = Map.delete(entries, entry_id)
+        %TodoList{todo_list | entries: new_entries }
+    end
+  end
 end

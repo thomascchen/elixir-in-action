@@ -3,7 +3,7 @@ defmodule Range do
     count(from, to)
   end
 
-  defp count(from, to) when from === to do
+  defp count(from, from) do
     IO.puts(from)
   end
 

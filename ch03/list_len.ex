@@ -3,7 +3,7 @@ defmodule ListLength do
     counter(0, list)
   end
 
-  def count(n) do
+  def count(_) do
     IO.puts("not a list!")
   end
 

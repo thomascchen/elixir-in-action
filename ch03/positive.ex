@@ -12,7 +12,7 @@ defmodule PositiveNum do
     eval_list(positive_list, tail)
   end
 
-  defp eval_list(new_list, [head | tail]) do
+  defp eval_list(new_list, [_ | tail]) do
     eval_list(new_list, tail)
   end
 end
